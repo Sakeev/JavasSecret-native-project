@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "title": "Pickahu",
+      "price": "999999",
+      "descr": "pickachu",
+      "image": "https://static.wikia.nocookie.net/anime-characters-fight/images/7/77/Pikachu.png/revision/latest/scale-to-width-down/700?cb=20181021155144&path-prefix=ru",
+      "id": 1
+    },
+    {
+      "title": "Sultan",
+      "price": "0000000",
+      "descr": "Bekov",
+      "image": "https://www.munchkin.co.uk/media/catalog/product/cache/6ebc13d0c0e34f391e9e75dc0e2b175c/3/1/31001_white_hot_safety_bath_ducky_side.jpg",
+      "id": 3
+    }
+  ]
+}
