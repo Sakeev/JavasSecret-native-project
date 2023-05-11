@@ -1,7 +1,6 @@
 const API = "http://localhost:8000/products";
 
 // ? переменные для инпутов: для добавления товаров
-// let inp = document.querySelector(".inp");
 let title = document.querySelector("#title");
 let price = document.querySelector("#price");
 let descr = document.querySelector("#descr");
@@ -28,7 +27,6 @@ btnAdd.addEventListener("click", async function () {
     descr: descr.value,
     image: image.value,
   };
-  //   console.log(obj);
 
   // проверка на заполненность инпутов
   if (

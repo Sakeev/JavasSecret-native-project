@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "title": "Pickahu",
+      "title": "Jasmina",
       "price": "999999",
       "descr": "pickachu",
       "image": "https://static.wikia.nocookie.net/anime-characters-fight/images/7/77/Pikachu.png/revision/latest/scale-to-width-down/700?cb=20181021155144&path-prefix=ru",
@@ -11,8 +11,15 @@
       "title": "Sultan",
       "price": "0000000",
       "descr": "Bekov",
-      "image": "https://www.munchkin.co.uk/media/catalog/product/cache/6ebc13d0c0e34f391e9e75dc0e2b175c/3/1/31001_white_hot_safety_bath_ducky_side.jpg",
+      "image": "https://ih1.redbubble.net/image.1967572110.0643/st,small,507x507-pad,600x600,f8f8f8.u2.jpg",
       "id": 3
+    },
+    {
+      "title": "Daniel",
+      "price": "999999",
+      "descr": "dsad",
+      "image": "https://easydrawingguides.com/wp-content/uploads/2022/10/how-to-draw-a-wolf-face-and-head-featured-image-1200.png",
+      "id": 4
     }
   ]
 }
