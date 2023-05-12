@@ -20,12 +20,15 @@
         <a class="navbar-brand">Navbar</a>
         <form class="d-flex" role="search">
           <input
+            id="search"
             class="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" id="search-btn" type="submit">
+            Search
+          </button>
         </form>
       </div>
     </nav>
@@ -131,6 +134,18 @@
     </div>
     <!-- ? Modal end -->
 
+    <!-- ? PAGINATION -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item prev">
+          <a class="page-link" href="#">Previous</a>
+        </li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li> -->
+        <div class="pagination-list d-flex"></div>
+        <li class="page-item next"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+    <!-- ? END OF PAGINATION -->
     <!-- JavaScript -->
     <script src="./script.js"></script>
     <script

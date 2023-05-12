@@ -18,6 +18,17 @@ let exampleModal = document.querySelector("#exampleModal");
 // ? блок куда добавляются карточки товара
 let list = document.querySelector("#products-list");
 
+// ? search
+let searchInp = document.querySelector("#search");
+let searchVal = "";
+
+// ? pagination
+let currentPage = 1; // текущая страница
+let pageTotalCount = 1; // общее количество страниц
+let paginationList = document.querySelector(".pagination-list");
+let prev = document.querySelector(".prev");
+let next = document.querySelector(".next");
+
 // ! навесили событие на кнопку "добавить"
 btnAdd.addEventListener("click", async function () {
   // собираем объект для добавления в db.json
@@ -60,14 +71,17 @@ btnAdd.addEventListener("click", async function () {
 
 // ! отображение карточек товаров
 async function render() {
-  let products = await fetch(API)
+  let products = await fetch(
+    `${API}?q=${searchVal}&_page=${currentPage}&_limit=3`
+  )
     .then((res) => res.json())
     .catch((err) => console.log(err));
+
+  drawPaginationButtons();
 
   list.innerHTML = "";
 
   products.forEach((element) => {
-    console.log(element);
     let newElem = document.createElement("div");
     newElem.innerHTML = `
     <div class="card m-5" style="width: 18rem;">
@@ -157,3 +171,71 @@ function saveEdit(editedProduct, id) {
   let modal = bootstrap.Modal.getInstance(exampleModal);
   modal.hide();
 }
+
+// todo PAGINATION
+function drawPaginationButtons() {
+  fetch(`${API}?q=${searchVal}`)
+    .then((res) => res.json())
+    .then((data) => {
+      pageTotalCount = Math.ceil(data.length / 3);
+      paginationList.innerHTML = "";
+      for (let i = 1; i <= pageTotalCount; i++) {
+        // создаем кнопки с цифрами
+        if (currentPage == i) {
+          let page1 = document.createElement("li");
+          page1.innerHTML = `<li class="page-item active"><a class="page-link page-number" href="#">${i}</a></li>`;
+          paginationList.append(page1);
+        } else {
+          let page2 = document.createElement("li");
+          page2.innerHTML = `<li class="page-item"><a class="page-link page-number" href="#">${i}</a></li>`;
+          paginationList.append(page2);
+        }
+      }
+
+      // ? красим в серый prev/next кнопки
+      if (currentPage == 1) {
+        prev.classList.add("disabled");
+      } else {
+        prev.classList.remove("disabled");
+      }
+
+      if (currentPage == pageTotalCount) {
+        next.classList.add("disabled");
+      } else {
+        next.classList.remove("disabled");
+      }
+    });
+}
+
+// кнопка переключения на предыдущую страницу
+prev.addEventListener("click", () => {
+  if (currentPage <= 1) {
+    return;
+  }
+  currentPage--;
+  render();
+});
+
+// кнопка переключения на следующую страницу
+next.addEventListener("click", () => {
+  if (currentPage >= pageTotalCount) {
+    return;
+  }
+  currentPage++;
+  render();
+});
+
+// кнопка переключения на определенную страницу
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("page-number")) {
+    currentPage = e.target.innerText;
+    render();
+  }
+});
+
+// todo SEARCH - функция срабатывает на каждый ввод
+searchInp.addEventListener("input", () => {
+  searchVal = searchInp.value; // записывает значение поисковика в переменную searchVal
+  currentPage = 1;
+  render();
+});
